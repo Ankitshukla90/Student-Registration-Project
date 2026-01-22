@@ -1,0 +1,187 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #666;
+}
+
+/* Form Styling */
+.form-section {
+    margin-bottom: 30px;
+}
+
+#studentForm {
+    display: grid;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    height: 1.2rem; /* Reserve space for error message */
+}
+
+button {
+    padding: 12px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+/* Display Section & Table */
+.display-section h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.table-container {
+    width: 100%;
+    /* Note: Vertical scrollbar is handled via JS per Task 6 */
+    overflow-x: auto; /* Always allow horizontal scroll on small screens */
+}
+
+/* Class added by JS for scrollbar task */
+.scrollable-table {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto;
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensures table doesn't squash too much */
+}
+
+thead {
+    background-color: #34495e;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Action Buttons in Table */
+.action-btn {
+    padding: 6px 12px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+/* --- RESPONSIVENESS (Task 5) --- */
+
+/* Mobile Devices (<= 640px) */
+@media screen and (max-width: 640px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    #studentForm {
+        grid-template-columns: 1fr; /* Stack inputs vertically */
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet Devices (641px - 1024px) */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    #studentForm {
+        grid-template-columns: 1fr 1fr; /* 2 columns grid */
+    }
+    
+    button[type="submit"] {
+        grid-column: span 2; /* Button spans full width */
+    }
+}
+
+/* Desktop Devices (>= 1025px) */
+@media screen and (min-width: 1025px) {
+    #studentForm {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+    
+    button[type="submit"] {
+        width: 200px;
+        justify-self: start;
+    }
+}
