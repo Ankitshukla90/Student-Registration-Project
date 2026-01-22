@@ -1,21 +1,21 @@
-/* --- CSS VARIABLES: Modern & Eye-Friendly Palette --- */
+
 :root {
-    --primary-color: #4f46e5;    /* Indigo (Primary Actions) */
-    --primary-hover: #4338ca;    /* Darker Indigo */
-    --secondary-color: #10b981;  /* Emerald (Success/Add) */
-    --secondary-hover: #059669;  /* Darker Emerald */
-    --edit-color: #f59e0b;       /* Amber (Edit) */
-    --delete-color: #ef4444;     /* Red (Delete) */
-    --bg-color: #f3f4f6;         /* Light Gray Background */
-    --card-bg: #ffffff;          /* White Card Background */
-    --text-main: #1f2937;        /* Dark Gray Text */
-    --text-muted: #6b7280;       /* Muted Text */
-    --border-color: #e5e7eb;     /* Light Border */
+    --primary-color: #4f46e5;    
+    --primary-hover: #4338ca;    
+    --secondary-color: #10b981;  
+    --secondary-hover: #059669;  
+    --edit-color: #f59e0b;       
+    --delete-color: #ef4444;     
+    --bg-color: #f3f4f6;         
+    --card-bg: #ffffff;          
+    --text-main: #1f2937;        
+    --text-muted: #6b7280;       
+    --border-color: #e5e7eb;     
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* --- RESET & BASE STYLES --- */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -30,7 +30,7 @@ body {
     padding: 20px;
 }
 
-/* --- CONTAINER (Card Style) --- */
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -38,10 +38,10 @@ body {
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     padding: 40px;
-    overflow: hidden; /* Keeps child elements inside rounded corners */
+    overflow: hidden; 
 }
 
-/* --- HEADER --- */
+
 header {
     text-align: center;
     margin-bottom: 40px;
@@ -67,8 +67,8 @@ header p {
 
 #studentForm {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Default to 2 columns */
-    gap: 25px; /* More breathing room */
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px; 
 }
 
 .form-group {
@@ -95,19 +95,19 @@ input:focus {
     outline: none;
     border-color: var(--primary-color);
     background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); /* Subtle glow */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); 
 }
 
 .error {
     color: var(--delete-color);
     font-size: 0.85rem;
     margin-top: 5px;
-    min-height: 20px; /* Prevents layout shift */
+    min-height: 20px; 
 }
 
 /* Submit Button */
 button[type="submit"] {
-    grid-column: span 2; /* Full width button */
+    grid-column: span 2; 
     padding: 14px;
     background-color: var(--secondary-color);
     color: white;
@@ -125,7 +125,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: var(--secondary-hover);
-    transform: translateY(-2px); /* Slight lift effect */
+    transform: translateY(-2px); 
     box-shadow: var(--shadow-md);
 }
 
@@ -141,17 +141,17 @@ button[type="submit"]:hover {
     width: 100%;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    overflow: hidden; /* For rounded corners on table */
+    overflow: hidden; 
 }
 
-/* Vertical Scrollbar (Task 6) */
+
 .scrollable-table {
-    max-height: 400px; /* Increased height for better view */
+    max-height: 400px; 
     overflow-y: auto;
     display: block;
 }
 
-/* Custom Scrollbar Styling */
+
 .scrollable-table::-webkit-scrollbar {
     width: 8px;
 }
@@ -169,7 +169,7 @@ button[type="submit"]:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 700px; /* Triggers horizontal scroll on very small screens */
+    min-width: 700px; 
 }
 
 thead {
@@ -186,7 +186,7 @@ th, td {
 th {
     font-weight: 600;
     letter-spacing: 0.5px;
-    position: sticky; /* Keep header fixed while scrolling */
+    position: sticky; 
     top: 0;
     z-index: 10;
 }
@@ -196,7 +196,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background-color: #eff6ff; /* Very light blue on hover */
+    background-color: #eff6ff; 
 }
 
 /* Action Buttons */
@@ -219,7 +219,7 @@ tbody tr:hover {
 .edit-btn { background-color: var(--edit-color); }
 .delete-btn { background-color: var(--delete-color); }
 
-/* --- RESPONSIVENESS (Task 5) --- */
+
 
 /* Mobile Devices (<= 640px) */
 @media screen and (max-width: 640px) {
@@ -232,7 +232,7 @@ tbody tr:hover {
         font-size: 1.8rem;
     }
 
-    /* Stack form vertically */
+    
     #studentForm {
         grid-template-columns: 1fr; 
         gap: 15px;
@@ -242,13 +242,13 @@ tbody tr:hover {
         grid-column: span 1;
     }
     
-    /* Allow horizontal scroll for table */
+    
     .table-container {
         overflow-x: auto;
     }
 }
 
-/* Tablet Devices (641px - 1024px) */
+
 @media screen and (min-width: 641px) and (max-width: 1024px) {
     .container {
         padding: 30px;
@@ -259,9 +259,8 @@ tbody tr:hover {
     }
 }
 
-/* Desktop Devices (>= 1025px) */
+
 @media screen and (min-width: 1025px) {
-    /* Refine button width on large screens */
     button[type="submit"] {
         width: auto;
         min-width: 250px;

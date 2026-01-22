@@ -1,19 +1,15 @@
 // Task 6: JavaScript Functionality
 
-// Initialize State
-// Load data from LocalStorage or start with empty array
 let students = JSON.parse(localStorage.getItem('students')) || [];
 const studentForm = document.getElementById('studentForm');
 const studentList = document.getElementById('studentList');
 const submitBtn = document.getElementById('submitBtn');
 const editIndexInput = document.getElementById('editIndex');
 
-// Initial Render
+
 document.addEventListener('DOMContentLoaded', renderTable);
 
-/**
- * Main Function to handle Form Submission (Add or Update)
- */
+
 studentForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -25,7 +21,7 @@ studentForm.addEventListener('submit', function(e) {
 
     // 2. Validate Inputs
     if (!validateInputs(name, id, email, contact)) {
-        return; // Stop if validation fails
+        return; 
     }
 
     // 3. Create Student Object
@@ -35,14 +31,14 @@ studentForm.addEventListener('submit', function(e) {
     const editIndex = editIndexInput.value;
 
     if (editIndex === "") {
-        // Add Mode
+        
         students.push(studentData);
     } else {
-        // Edit Mode
+        
         students[editIndex] = studentData;
-        submitBtn.textContent = "Add Student"; // Reset button text
+        submitBtn.textContent = "Add Student"; 
         submitBtn.style.backgroundColor = "#2ecc71";
-        editIndexInput.value = ""; // Clear edit index
+        editIndexInput.value = ""; 
     }
 
     // 5. Save and Render
@@ -93,7 +89,7 @@ function validateInputs(name, id, email, contact) {
  * Render Table Function
  */
 function renderTable() {
-    studentList.innerHTML = ""; // Clear current list
+    studentList.innerHTML = ""; 
 
     students.forEach((student, index) => {
         const row = document.createElement('tr');
@@ -115,22 +111,20 @@ function renderTable() {
     manageScrollbar();
 }
 
-/**
- * Edit Student Function
- */
+
 function editStudent(index) {
     const student = students[index];
 
-    // Populate form fields
+    
     document.getElementById('studentName').value = student.name;
     document.getElementById('studentID').value = student.id;
     document.getElementById('emailID').value = student.email;
     document.getElementById('contactNo').value = student.contact;
 
-    // Set Hidden Index
+    
     editIndexInput.value = index;
 
-    // Change Button Visuals
+    
     submitBtn.textContent = "Update Student";
     submitBtn.style.backgroundColor = "#f39c12";
 }
@@ -140,28 +134,23 @@ function editStudent(index) {
  */
 function deleteStudent(index) {
     if (confirm("Are you sure you want to delete this record?")) {
-        students.splice(index, 1); // Remove 1 item at index
+        students.splice(index, 1); 
         saveToLocalStorage();
         renderTable();
     }
 }
 
-/**
- * Local Storage Helper
- */
+
 function saveToLocalStorage() {
     localStorage.setItem('students', JSON.stringify(students));
 }
 
-/**
- * Dynamic Scrollbar Logic (Task 6)
- * Checks if the number of rows exceeds 5, applies scrollable class.
- */
+
 function manageScrollbar() {
     const tableContainer = document.getElementById('tableContainer');
     const rowCount = students.length;
 
-    // If we have more than 5 students, enable scroll (you can adjust the logic)
+    // If we have more than 5 students, we can enable scroll 
     if (rowCount > 5) {
         tableContainer.classList.add('scrollable-table');
     } else {
