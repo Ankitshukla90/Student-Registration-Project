@@ -1,49 +1,74 @@
-/* Reset and Base Styles */
+/* --- CSS VARIABLES: Modern & Eye-Friendly Palette --- */
+:root {
+    --primary-color: #4f46e5;    /* Indigo (Primary Actions) */
+    --primary-hover: #4338ca;    /* Darker Indigo */
+    --secondary-color: #10b981;  /* Emerald (Success/Add) */
+    --secondary-hover: #059669;  /* Darker Emerald */
+    --edit-color: #f59e0b;       /* Amber (Edit) */
+    --delete-color: #ef4444;     /* Red (Delete) */
+    --bg-color: #f3f4f6;         /* Light Gray Background */
+    --card-bg: #ffffff;          /* White Card Background */
+    --text-main: #1f2937;        /* Dark Gray Text */
+    --text-muted: #6b7280;       /* Muted Text */
+    --border-color: #e5e7eb;     /* Light Border */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* --- RESET & BASE STYLES --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     line-height: 1.6;
+    padding: 20px;
 }
 
+/* --- CONTAINER (Card Style) --- */
 .container {
     max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 40px;
+    overflow: hidden; /* Keeps child elements inside rounded corners */
 }
 
-/* Header */
+/* --- HEADER --- */
 header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
 }
 
 header h1 {
-    color: #2c3e50;
+    color: var(--primary-color);
+    font-size: 2.2rem;
     margin-bottom: 10px;
 }
 
 header p {
-    color: #666;
+    color: var(--text-muted);
+    font-size: 1.1rem;
 }
 
-/* Form Styling */
+/* --- FORM STYLING --- */
 .form-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 #studentForm {
     display: grid;
-    gap: 15px;
+    grid-template-columns: 1fr 1fr; /* Default to 2 columns */
+    gap: 25px; /* More breathing room */
 }
 
 .form-group {
@@ -53,135 +78,193 @@ header p {
 
 label {
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: var(--text-main);
 }
 
 input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9fafb;
 }
 
 input:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); /* Subtle glow */
 }
 
 .error {
-    color: #e74c3c;
+    color: var(--delete-color);
     font-size: 0.85rem;
-    height: 1.2rem; /* Reserve space for error message */
+    margin-top: 5px;
+    min-height: 20px; /* Prevents layout shift */
 }
 
-button {
-    padding: 12px;
-    background-color: #2ecc71;
+/* Submit Button */
+button[type="submit"] {
+    grid-column: span 2; /* Full width button */
+    padding: 14px;
+    background-color: var(--secondary-color);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: var(--shadow-sm);
 }
 
-button:hover {
-    background-color: #27ae60;
+button[type="submit"]:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: var(--shadow-md);
 }
 
-/* Display Section & Table */
+/* --- DISPLAY SECTION & TABLE --- */
 .display-section h2 {
-    margin-bottom: 15px;
-    color: #2c3e50;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
 }
 
 .table-container {
     width: 100%;
-    /* Note: Vertical scrollbar is handled via JS per Task 6 */
-    overflow-x: auto; /* Always allow horizontal scroll on small screens */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* For rounded corners on table */
 }
 
-/* Class added by JS for scrollbar task */
+/* Vertical Scrollbar (Task 6) */
 .scrollable-table {
-    max-height: 300px; /* Adjust height as needed */
+    max-height: 400px; /* Increased height for better view */
     overflow-y: auto;
     display: block;
+}
+
+/* Custom Scrollbar Styling */
+.scrollable-table::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollable-table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.scrollable-table::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 4px;
+}
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px; /* Ensures table doesn't squash too much */
+    min-width: 700px; /* Triggers horizontal scroll on very small screens */
 }
 
 thead {
-    background-color: #34495e;
+    background-color: var(--primary-color);
     color: white;
 }
 
 th, td {
-    padding: 12px;
+    padding: 16px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: sticky; /* Keep header fixed while scrolling */
+    top: 0;
+    z-index: 10;
 }
 
-/* Action Buttons in Table */
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #eff6ff; /* Very light blue on hover */
+}
+
+/* Action Buttons */
 .action-btn {
-    padding: 6px 12px;
-    margin-right: 5px;
-    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 8px;
+    transition: opacity 0.2s;
 }
 
-.edit-btn {
-    background-color: #f39c12;
+.action-btn:hover {
+    opacity: 0.9;
 }
 
-.delete-btn {
-    background-color: #e74c3c;
-}
+.edit-btn { background-color: var(--edit-color); }
+.delete-btn { background-color: var(--delete-color); }
 
 /* --- RESPONSIVENESS (Task 5) --- */
 
 /* Mobile Devices (<= 640px) */
 @media screen and (max-width: 640px) {
     .container {
+        padding: 20px;
         margin: 10px;
-        padding: 15px;
     }
-    
-    #studentForm {
-        grid-template-columns: 1fr; /* Stack inputs vertically */
-    }
-    
+
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    /* Stack form vertically */
+    #studentForm {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    
+    button[type="submit"] {
+        grid-column: span 1;
+    }
+    
+    /* Allow horizontal scroll for table */
+    .table-container {
+        overflow-x: auto;
     }
 }
 
 /* Tablet Devices (641px - 1024px) */
 @media screen and (min-width: 641px) and (max-width: 1024px) {
-    #studentForm {
-        grid-template-columns: 1fr 1fr; /* 2 columns grid */
+    .container {
+        padding: 30px;
     }
     
-    button[type="submit"] {
-        grid-column: span 2; /* Button spans full width */
+    #studentForm {
+        gap: 20px;
     }
 }
 
 /* Desktop Devices (>= 1025px) */
 @media screen and (min-width: 1025px) {
-    #studentForm {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    }
-    
+    /* Refine button width on large screens */
     button[type="submit"] {
-        width: 200px;
+        width: auto;
+        min-width: 250px;
         justify-self: start;
     }
 }
