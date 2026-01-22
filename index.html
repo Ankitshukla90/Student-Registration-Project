@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A CRUD based Student Registration System using LocalStorage">
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Student Registration System</h1>
+            <p>Manage student records efficiently. Register new students, view details, update information, or remove records securely.</p>
+        </header>
+
+        <section class="form-section">
+            <form id="studentForm">
+                <input type="hidden" id="editIndex"> <div class="form-group">
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" placeholder="e.g. John Doe">
+                    <small class="error" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentID">Student ID:</label>
+                    <input type="number" id="studentID" placeholder="e.g. 101">
+                    <small class="error" id="idError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailID">Email ID:</label>
+                    <input type="email" id="emailID" placeholder="e.g. john@example.com">
+                    <small class="error" id="emailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNo">Contact No:</label>
+                    <input type="number" id="contactNo" placeholder="e.g. 9876543210">
+                    <small class="error" id="contactError"></small>
+                </div>
+
+                <button type="submit" id="submitBtn">Add Student</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="display-section">
+            <h2>Registered Students</h2>
+            <div class="table-container" id="tableContainer">
+                <table id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Student ID</th>
+                            <th>Email ID</th>
+                            <th>Contact No</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentList">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
